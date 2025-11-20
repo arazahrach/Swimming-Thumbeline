@@ -15,6 +15,8 @@ public class WaterFlow : MonoBehaviour
     public GameObject winUI; 
     public GameObject loseUI;  
 
+    public GameObject Nextlevel; 
+
     public void TriggerFlow()
     {
         if (startPipe == null)
@@ -45,10 +47,10 @@ public class WaterFlow : MonoBehaviour
         if (currentPipe.isFinishPipe)
         {
             Debug.Log("You Win!");
-            state = GameState.Ended;
 
             if (winUI != null)
                 winUI.SetActive(true);
+                Nextlevel.SetActive(true);
 
             return true;
         }
