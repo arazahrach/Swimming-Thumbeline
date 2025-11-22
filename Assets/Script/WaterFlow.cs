@@ -1,61 +1,102 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
+
 public class WaterFlow : MonoBehaviour
 {
     public GridManager gridManager;
+
+    [Header("Auto Start Timer")]
+    public bool useAutoStart = true;
+    public float countdown = 30f;
+    public Text countdownText;
+
+    [Header("Fairy")]
+    public Transform fairy;
+    public float moveDuration = 0.5f;
 
     [Header("Source Pipe")]
     public PipeUI startPipe;
 
     [Header("Water Direction")]
     public Direction startDirection = Direction.Up;
-    
-    public GameState state = GameState.Editing;  
-    public GameObject winUI; 
-    public GameObject loseUI;  
+    public GameState state = GameState.Editing;
+    public GameObject winUI;
+    public GameObject loseUI;
+
+    void Start()
+    {
+        if (useAutoStart)
+            StartCoroutine(StartCountdown());
+    }
+
+    void Awake()
+    {
+    if (gridManager == null) 
+        gridManager = FindObjectOfType<GridManager>();
+
+    if (fairy == null) 
+        fairy = GameObject.Find("Fairy")?.transform;
+
+    if (startPipe == null)
+        startPipe = FindObjectOfType<PipeUI>();
+
+    if (countdownText == null)
+        countdownText = FindObjectOfType<Text>();
+    }
+
+
+
+    IEnumerator StartCountdown()
+    {
+    float t = countdown;
+
+    while (t > 0 && state == GameState.Editing)
+    {
+        if (countdownText != null)
+            countdownText.text = Mathf.CeilToInt(t).ToString();
+
+        t -= Time.deltaTime;
+        yield return null;
+    }
+
+    if (state == GameState.Editing)
+        TriggerFlow();
+    }
+
 
     public GameObject Nextlevel; 
 
     public void TriggerFlow()
     {
         if (startPipe == null)
-        {
-            Debug.LogError("StartPipe is not choosen yet");
             return;
-        }
 
         state = GameState.Running;
 
-        Debug.Log("Flow start");
+        fairy.position = startPipe.transform.position;
+
         StartFlow(startPipe, startDirection);
     }
 
     public void StartFlow(PipeUI startPipe, Direction fromDirection)
     {
-        Flow(startPipe, fromDirection);
+        StartCoroutine(Flow(startPipe, fromDirection));
     }
 
-    bool Flow(PipeUI currentPipe, Direction from)
+    IEnumerator Flow(PipeUI currentPipe, Direction from)
     {
-    Image pipeImage = currentPipe.GetComponent<Image>();
+        Image pipeImage = currentPipe.GetComponent<Image>();
         if (pipeImage != null)
-        {
             pipeImage.color = Color.blue;
-        }
 
         if (currentPipe.isFinishPipe)
         {
-            Debug.Log("You Win!");
-
-            if (winUI != null)
-                winUI.SetActive(true);
-                Nextlevel.SetActive(true);
-
-            return true;
+            state = GameState.Ended;
+            if (winUI != null) winUI.SetActive(true);
+            yield break;
         }
-
-        Debug.Log($"Current Pipe: ({currentPipe.gridX},{currentPipe.gridY}) OutDirs: {string.Join(",", currentPipe.outputDirections)} From: {from}");
 
         List<PipeUI> nextPipes = new List<PipeUI>();
 
@@ -65,31 +106,20 @@ public class WaterFlow : MonoBehaviour
             {
                 PipeUI neighbor = gridManager.GetNeighbor(currentPipe, outDir);
 
-                if(neighbor == null)
-                {
-                    Debug.Log($"Neighbor in direction {outDir} is NULL");
-                }
-                else
+                if (neighbor != null)
                 {
                     bool hasInput = neighbor.HasInputFrom(Opposite(outDir));
-                    Debug.Log($"Neighbor found at ({neighbor.gridX},{neighbor.gridY}) InputDirs: {string.Join(",", neighbor.inputDirections)} HasInputFrom {Opposite(outDir)} = {hasInput}");
-
                     if (hasInput)
                         nextPipes.Add(neighbor);
                 }
             }
         }
 
- 
         if (nextPipes.Count == 0)
         {
-            Debug.Log("Game Over");
             state = GameState.Ended;
-
-            if (loseUI != null)
-                loseUI.SetActive(true);
-
-            return false;
+            if (loseUI != null) loseUI.SetActive(true);
+            yield break;
         }
 
         PipeUI chosen = null;
@@ -103,13 +133,27 @@ public class WaterFlow : MonoBehaviour
         }
 
         if (chosen == null)
-        {
-            chosen = nextPipes[0]; 
-        }
+            chosen = nextPipes[0];
 
-        return Flow(chosen, GetDirection(currentPipe, chosen));
+        // perubahan
+        yield return StartCoroutine(MoveFairy(currentPipe, chosen));
+
+        yield return StartCoroutine(Flow(chosen, GetDirection(currentPipe, chosen)));
     }
 
+    IEnumerator MoveFairy(PipeUI from, PipeUI to)
+    {
+        Vector3 startPos = from.transform.position;
+        Vector3 endPos = to.transform.position;
+
+        float t = 0;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / moveDuration;
+            fairy.position = Vector3.Lerp(startPos, endPos, t);
+            yield return null;
+        }
+    }
 
     Direction Opposite(Direction dir)
     {
@@ -136,17 +180,16 @@ public class WaterFlow : MonoBehaviour
             (a == Direction.Right && b == Direction.Left))
             return false;
 
-        return true; 
+        return true;
     }
 
     Direction GetDirection(PipeUI from, PipeUI to)
     {
-    if (to.gridX > from.gridX) return Direction.Right;
-    if (to.gridX < from.gridX) return Direction.Left;
-    if (to.gridY > from.gridY) return Direction.Down; 
-    if (to.gridY < from.gridY) return Direction.Up;
-    
-    return Direction.Up;
-    }   
+        if (to.gridX > from.gridX) return Direction.Right;
+        if (to.gridX < from.gridX) return Direction.Left;
+        if (to.gridY > from.gridY) return Direction.Down;
+        if (to.gridY < from.gridY) return Direction.Up;
 
+        return Direction.Up;
+    }
 }
