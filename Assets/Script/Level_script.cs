@@ -16,4 +16,8 @@ public class Level_script : MonoBehaviour
         }
         SceneManager.LoadScene(0);
     }
+    public void Kembali()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
