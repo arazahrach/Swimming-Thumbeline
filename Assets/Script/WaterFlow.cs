@@ -66,6 +66,8 @@ public class WaterFlow : MonoBehaviour
     }
 
 
+    public GameObject Nextlevel; 
+
     public void TriggerFlow()
     {
         if (startPipe == null)
