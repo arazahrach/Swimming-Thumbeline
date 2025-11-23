@@ -1455,8 +1455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 1
-  inputDirections: 02000000000000000100000003000000
-  outputDirections: 01000000020000000000000002000000
+  inputDirections: 0200000000000000
+  outputDirections: 0000000002000000
   gridX: 2
   gridY: 2
   isSource: 0
@@ -1720,8 +1720,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
-  inputDirections: 0100000003000000
-  outputDirections: 0300000001000000
+  inputDirections: 0200000003000000
+  outputDirections: 0300000002000000
   gridX: 4
   gridY: 8
   isSource: 0
@@ -2278,8 +2278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
-  inputDirections: 02000000
-  outputDirections: 03000000
+  inputDirections: 03000000
+  outputDirections: 02000000
   gridX: 1
   gridY: 8
   isSource: 0
@@ -2642,7 +2642,7 @@ MonoBehaviour:
   canRotate: 1
   inputDirections: 0200000003000000
   outputDirections: 0300000002000000
-  gridX: 2
+  gridX: 1
   gridY: 6
   isSource: 0
   isFinishPipe: 0
@@ -2735,8 +2735,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
-  inputDirections: 0100000003000000
-  outputDirections: 0300000001000000
+  inputDirections: 0200000003000000
+  outputDirections: 0300000002000000
   gridX: 3
   gridY: 8
   isSource: 0
@@ -4618,7 +4618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
-  inputDirections: 0100000003000000
+  inputDirections: 0100000002000000
   outputDirections: 000000000200000001000000
   gridX: 2
   gridY: 6
@@ -4878,8 +4878,8 @@ MonoBehaviour:
   canRotate: 0
   inputDirections: 01000000
   outputDirections: 00000000
-  gridX: 3
-  gridY: 5
+  gridX: 5
+  gridY: 4
   isSource: 0
   isFinishPipe: 0
 --- !u!1 &1783858532
@@ -5292,7 +5292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
-  inputDirections: 01000000
+  inputDirections: 0100000002000000
   outputDirections: 0000000002000000
   gridX: 5
   gridY: 2

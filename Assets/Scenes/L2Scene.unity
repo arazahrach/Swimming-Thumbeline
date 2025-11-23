@@ -3072,8 +3072,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
-  inputDirections: 02000000
-  outputDirections: 
+  inputDirections: 03000000
+  outputDirections: 02000000
   gridX: 1
   gridY: 3
   isSource: 0
@@ -4156,11 +4156,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridManager: {fileID: 1251972149}
+  useAutoStart: 1
+  countdown: 30
+  countdownText: {fileID: 0}
+  fairy: {fileID: 0}
+  moveDuration: 0.5
   startPipe: {fileID: 188416513}
   startDirection: 0
   state: 0
   winUI: {fileID: 698011845}
   loseUI: {fileID: 1789188267}
+  Nextlevel: {fileID: 0}
 --- !u!4 &1801308725
 Transform:
   m_ObjectHideFlags: 0

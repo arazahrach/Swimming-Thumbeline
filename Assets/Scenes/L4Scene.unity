@@ -1740,7 +1740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
-  inputDirections: 01000000
+  inputDirections: 0100000000000000
   outputDirections: 0200000000000000
   gridX: 4
   gridY: 7
@@ -2711,7 +2711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canRotate: 0
   inputDirections: 0200000003000000
-  outputDirections: 0000000003000000
+  outputDirections: 0200000003000000
   gridX: 3
   gridY: 3
   isSource: 0
@@ -3509,9 +3509,9 @@ MonoBehaviour:
   canRotate: 0
   inputDirections: 01000000
   outputDirections: 
-  gridX: 5
+  gridX: 4
   gridY: 0
-  isSource: 1
+  isSource: 0
   isFinishPipe: 1
 --- !u!1 &1583552189
 GameObject:
@@ -3607,7 +3607,7 @@ MonoBehaviour:
   gridX: 4
   gridY: 1
   isSource: 0
-  isFinishPipe: 1
+  isFinishPipe: 0
 --- !u!1 &1594850892
 GameObject:
   m_ObjectHideFlags: 0
@@ -3861,7 +3861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canRotate: 0
   inputDirections: 03000000
-  outputDirections: 
+  outputDirections: 02000000
   gridX: 3
   gridY: 7
   isSource: 0
@@ -3991,11 +3991,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridManager: {fileID: 1251972149}
+  useAutoStart: 1
+  countdown: 30
+  countdownText: {fileID: 0}
+  fairy: {fileID: 0}
+  moveDuration: 0.5
   startPipe: {fileID: 188416513}
   startDirection: 0
   state: 0
   winUI: {fileID: 0}
   loseUI: {fileID: 0}
+  Nextlevel: {fileID: 0}
 --- !u!4 &1801308725
 Transform:
   m_ObjectHideFlags: 0
@@ -4492,8 +4498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
-  inputDirections: 01000000
-  outputDirections: 00000000
+  inputDirections: 0100000000000000
+  outputDirections: 0000000001000000
   gridX: 4
   gridY: 6
   isSource: 0
