@@ -3072,8 +3072,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
-  inputDirections: 02000000
-  outputDirections: 
+  inputDirections: 03000000
+  outputDirections: 02000000
   gridX: 1
   gridY: 3
   isSource: 0
