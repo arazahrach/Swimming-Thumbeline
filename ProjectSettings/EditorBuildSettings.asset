@@ -6,22 +6,40 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu_Level.unity
-    guid: 821b05142ab4070479cc1df57924c2ab
+    path: Assets/Scenes/MainMenu.unity
+    guid: 56c74c83a05728c46a8a0d3228406d56
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/L1Scene.unity
     guid: ead219dc5f368d749a667cfd9d507d95
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/L2Scene.unity
     guid: 202afdb871bf3af4d9dbef842cbfbf96
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: 685286d4b75e3f546a09afc9f1b5a9b4
+    path: Assets/Scenes/L3Scene.unity
+    guid: 18f87a7e72d8fb34f921dec990ee8147
   - enabled: 1
-    path: Assets/Scenes/Level4.unity
+    path: Assets/Scenes/L4Scene.unity
     guid: 132ec99a2d9ddae4caebc71c1894e6cd
   - enabled: 1
-    path: Assets/Scenes/Level5.unity
+    path: Assets/Scenes/L5Scene.unity
     guid: 292716e568333ad419417fcdb23526c1
+  - enabled: 1
+    path: Assets/Scenes/StoryScene.unity
+    guid: 9b8b2def10f06204bbf1536335cfe80a
+  - enabled: 1
+    path: Assets/Scenes/SplashScreen.unity
+    guid: 6d2c2a894caf37740b1fdbdc26bca080
+  - enabled: 0
+    path: Assets/Scenes/L4Scene.unity
+    guid: 132ec99a2d9ddae4caebc71c1894e6cd
+  - enabled: 0
+    path: Assets/Scenes/scenelama/L3Scene.unity
+    guid: 685286d4b75e3f546a09afc9f1b5a9b4
+  - enabled: 0
+    path: Assets/Scenes/L5Scene.unity
+    guid: 292716e568333ad419417fcdb23526c1
+  - enabled: 0
+    path: Assets/Scenes/scenelama/L3Scene.unity
+    guid: 685286d4b75e3f546a09afc9f1b5a9b4
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

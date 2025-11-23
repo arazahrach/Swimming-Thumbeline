@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 314336521}
   - component: {fileID: 314336520}
   - component: {fileID: 314336519}
+  - component: {fileID: 314336523}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -359,6 +360,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &314336523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314336518}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1398bf606580e141818a4cb984855e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 560153967}
+  - {fileID: 2099566360}
+  - {fileID: 574442485}
+  - {fileID: 1483094153}
 --- !u!1 &351237900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,14 +1097,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1569017985}
-        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: LoadSceneWithSFX
-        m_Mode: 5
+      - m_Target: {fileID: 1314591071}
+        m_TargetAssemblyTypeName: Levelscript, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: L3Scene
           m_BoolArgument: 0
@@ -1817,6 +1835,7 @@ GameObject:
   - component: {fileID: 1314591069}
   - component: {fileID: 1314591068}
   - component: {fileID: 1314591070}
+  - component: {fileID: 1314591071}
   m_Layer: 5
   m_Name: LevelPanel
   m_TagString: Untagged
@@ -1908,6 +1927,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1314591071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314591066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1398bf606580e141818a4cb984855e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 560153967}
+  - {fileID: 2099566360}
+  - {fileID: 574442485}
+  - {fileID: 1483094153}
+  - {fileID: 1369820107}
 --- !u!1 &1369820105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,14 +2028,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1569017985}
-        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: LoadSceneWithSFX
-        m_Mode: 5
+      - m_Target: {fileID: 1314591071}
+        m_TargetAssemblyTypeName: Levelscript, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: L5Scene
           m_BoolArgument: 0
@@ -2136,14 +2173,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1569017985}
-        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: LoadSceneWithSFX
-        m_Mode: 5
+      - m_Target: {fileID: 1314591071}
+        m_TargetAssemblyTypeName: Levelscript, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: L4Scene
           m_BoolArgument: 0
@@ -2864,14 +2901,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1569017985}
-        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: LoadSceneWithSFX
-        m_Mode: 5
+      - m_Target: {fileID: 1314591071}
+        m_TargetAssemblyTypeName: Levelscript, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: L2Scene
           m_BoolArgument: 0
