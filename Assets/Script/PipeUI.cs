@@ -5,6 +5,8 @@ public enum Direction { Up, Down, Left, Right }
 
 public class PipeUI : MonoBehaviour, IPointerClickHandler
 {
+    public AudioClip rotateSFX;
+    private AudioSource audioSource;
     [Header("Pipe rotate status")]
     public bool canRotate = true;
 
@@ -27,6 +29,7 @@ public class PipeUI : MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gridManager = FindObjectOfType<GridManager>();
 
         if (gridManager != null)
@@ -40,14 +43,21 @@ public class PipeUI : MonoBehaviour, IPointerClickHandler
     }
 
     public void OnPointerClick(PointerEventData eventData)
+{
+    if (canRotate)
     {
-        if (canRotate)
-        {
-            transform.Rotate(0, 0, -90);
-            RotateDirections(inputDirections);
-            RotateDirections(outputDirections);
-        }
+        
+        // Play SFX
+        if (audioSource != null && rotateSFX != null)
+            audioSource.PlayOneShot(rotateSFX);
+
+        // Rotate pipe
+        transform.Rotate(0, 0, -90);
+        RotateDirections(inputDirections);
+        RotateDirections(outputDirections);
     }
+}
+
 
     void RotateDirections(Direction[] dirs)
     {
