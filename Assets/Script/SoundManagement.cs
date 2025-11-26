@@ -6,13 +6,18 @@ public class SoundManagement : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip ButtonTap;
+    public GameObject Menang;
+    public GameObject Kalah;
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
-        
+        if (Menang.activeInHierarchy || Kalah.activeInHierarchy)
+        {
+            audioSource.Stop();
+        }
     }
     public void ButtonSound()
     {

@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 public class WaterFlow : MonoBehaviour
 {
+    public AudioClip swimmingSFX;
+    public AudioClip winSFX;
+    public AudioClip loseSFX;
+    private AudioSource audioSource;
     public GridManager gridManager;
 
     [Header("Auto Start Timer")]
@@ -27,6 +31,7 @@ public class WaterFlow : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (useAutoStart)
             StartCoroutine(StartCountdown());
     }
@@ -76,7 +81,8 @@ public class WaterFlow : MonoBehaviour
         state = GameState.Running;
 
         fairy.position = startPipe.transform.position;
-
+        if (audioSource != null && swimmingSFX != null)
+            audioSource.PlayOneShot(swimmingSFX);
         StartFlow(startPipe, startDirection);
     }
 
@@ -94,6 +100,9 @@ public class WaterFlow : MonoBehaviour
         if (currentPipe.isFinishPipe)
         {
             state = GameState.Ended;
+            if (audioSource != null && winSFX != null)
+                audioSource.Stop();                   
+                audioSource.PlayOneShot(winSFX);
             if (winUI != null) winUI.SetActive(true);
             yield break;
         }
@@ -118,6 +127,9 @@ public class WaterFlow : MonoBehaviour
         if (nextPipes.Count == 0)
         {
             state = GameState.Ended;
+            if (audioSource != null && loseSFX != null)
+                audioSource.Stop();
+                audioSource.PlayOneShot(loseSFX);
             if (loseUI != null) loseUI.SetActive(true);
             yield break;
         }
