@@ -77,7 +77,10 @@ public class WaterFlow : MonoBehaviour
     {
         if (startPipe == null)
             return;
-
+        foreach (PipeUI p in gridManager.AllPipes)
+        {
+            p.canRotate = false;
+        }
         state = GameState.Running;
 
         fairy.position = startPipe.transform.position;
