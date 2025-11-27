@@ -8,9 +8,14 @@ public class SoundManagement : MonoBehaviour
     public AudioClip ButtonTap;
     public GameObject Menang;
     public GameObject Kalah;
+    public AudioClip Keran;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+    public void BunyiKeran()
+    {
+        audioSource.PlayOneShot(Keran);
     }
     void Update()
     {

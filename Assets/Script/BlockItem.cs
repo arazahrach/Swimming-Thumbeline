@@ -12,10 +12,12 @@ public class BlockItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private CanvasGroup canvasGroup;
     private Vector3 originalPosition;
 
+    public AudioSource audioSource;
     private GridManager gridManager;
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         rectTransform = GetComponent<RectTransform>();
         canvas = FindObjectOfType<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -50,10 +52,10 @@ public class BlockItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
-
         PipeUI targetPipe = GetPipeUnder();
         if (targetPipe != null)
         {
+            audioSource.Play();
             blockedPipe = targetPipe;
             cachedInputDirections = targetPipe.inputDirections;
             rectTransform.position = targetPipe.transform.position;
