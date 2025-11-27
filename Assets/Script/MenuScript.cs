@@ -1,16 +1,32 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    public GameObject NewBackground;
+    public GameObject Background;
     public GameObject MenuPanel;
     public GameObject LevelPanel;
 
     void Start()
     {
-        MenuPanel.SetActive(true);
-        LevelPanel.SetActive(false); 
+        if(PlayerPrefs.GetInt("OpenLevelPanel") == 1)
+        {
+            LevelPanel.SetActive(true);
+            MenuPanel.SetActive(false);
+            Background.SetActive(false);
+            NewBackground.SetActive(true);
+            PlayerPrefs.SetInt("OpenLevelPanel", 0); 
+        }
+        else
+        {
+            Background.SetActive(true);
+            NewBackground.SetActive(false);
+            MenuPanel.SetActive(true);
+            LevelPanel.SetActive(false);
+        }
     }
 
     void Update()
@@ -19,6 +35,8 @@ public class MenuScript : MonoBehaviour
         {
             if (LevelPanel.activeSelf)
             {
+                Background.SetActive(false);
+                NewBackground.SetActive(true);
                 LevelPanel.SetActive(false);
                 MenuPanel.SetActive(true);
             }
@@ -43,6 +61,8 @@ public class MenuScript : MonoBehaviour
 
     public void PlayButton()
     {
+        Background.SetActive(false);
+        NewBackground.SetActive(true);
         MenuPanel.SetActive(false);
         LevelPanel.SetActive(true);
     }
