@@ -9,9 +9,10 @@ public class MenuScript : MonoBehaviour
     public GameObject Background;
     public GameObject MenuPanel;
     public GameObject LevelPanel;
-
+    public GameObject Credit;
     void Start()
     {
+        Credit.SetActive(false);
         if(PlayerPrefs.GetInt("OpenLevelPanel") == 1)
         {
             LevelPanel.SetActive(true);
@@ -65,5 +66,18 @@ public class MenuScript : MonoBehaviour
         NewBackground.SetActive(true);
         MenuPanel.SetActive(false);
         LevelPanel.SetActive(true);
+    }
+
+    public void Creditbutton()
+    {
+        Background.SetActive(false);
+        Credit.SetActive(true);
+        MenuPanel.SetActive(false);
+    }
+    public void Back()
+    {
+        Background.SetActive(true);
+        Credit.SetActive(false);
+        MenuPanel.SetActive(true);
     }
 }
