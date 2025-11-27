@@ -2,9 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class WaterFlow : MonoBehaviour
 {
+    public TMP_Text myTextMeshProText;
     public AudioClip swimmingSFX;
     public AudioClip winSFX;
     public AudioClip loseSFX;
@@ -59,9 +61,7 @@ public class WaterFlow : MonoBehaviour
 
         while (t > 0 && state == GameState.Editing)
         {
-            if (countdownText != null)
-                countdownText.text = Mathf.CeilToInt(t).ToString();
-
+            countdownText.text = Mathf.CeilToInt(t).ToString();
             t -= Time.deltaTime;
             yield return null;
         }
